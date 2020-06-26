@@ -1,0 +1,6 @@
+# Require for entering the text
+pyautogui
+
+# Required for connecting to the discord server
+discord
+python-dotenv
