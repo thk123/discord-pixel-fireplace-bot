@@ -37,14 +37,14 @@ def main():
         command = extract_message(message.content, '!')
         if command:
             if is_arrow_keys(command):
-                response = 'Pressing arrow keys'
+                response = 'Pressing arrow keys: ' + command
                 press(command)
             else:
                 response = 'Executing fire command: ' + command
                 typewrite(command)
 
             print(response)
-            await message.channel.send('Doing some firey stuff')
+            await message.add_reaction('🔥')
 
     client.run(TOKEN)
 
