@@ -11,9 +11,7 @@ def extract_message(message_body, prefix):
 
 
 def is_arrow_keys(command):
-    if command in {'up', 'down', 'left', 'right'}:
-        return command
-    return None
+    return command in {'up', 'down', 'left', 'right'}
 
 
 def main():

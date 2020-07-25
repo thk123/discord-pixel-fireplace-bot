@@ -8,11 +8,11 @@ class TestPyro(unittest.TestCase):
         self.assertEqual(pyro.extract_message('@pyro hello', '@pyro'), 'hello')
 
     def test_arrow_keys(self):
-        self.assertEqual(pyro.is_arrow_keys('left'), 'left')
-        self.assertEqual(pyro.is_arrow_keys('right'), 'right')
-        self.assertEqual(pyro.is_arrow_keys('up'), 'up')
-        self.assertEqual(pyro.is_arrow_keys('down'), 'down')
-        self.assertEqual(pyro.is_arrow_keys('exclaim'), None)
+        self.assertTrue(pyro.is_arrow_keys('left'))
+        self.assertTrue(pyro.is_arrow_keys('right'))
+        self.assertTrue(pyro.is_arrow_keys('up'))
+        self.assertTrue(pyro.is_arrow_keys('down'))
+        self.assertFalse(pyro.is_arrow_keys('exclaim'))
 
 if __name__ == '__main__':
     unittest.main()
