@@ -30,9 +30,10 @@ def main():
         if message.author == client.user:
             return
 
-        if message.content.startswith('!'):
-            response = 'Executing fire command: ' + message.content
-            typewrite(message.content)
+        command = extract_message(message.content, '!')
+        if command:
+            response = 'Executing fire command: ' + command
+            typewrite(command)
 
             print(response)
             await message.channel.send('Doing some firey stuff')
