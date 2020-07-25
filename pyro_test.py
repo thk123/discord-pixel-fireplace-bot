@@ -9,8 +9,8 @@ class TestPyro(unittest.TestCase):
 
     def test_arrow_keys(self):
         self.assertTrue(pyro.is_arrow_keys('left'))
-        self.assertTrue(pyro.is_arrow_keys('right'))
-        self.assertTrue(pyro.is_arrow_keys('up'))
+        self.assertTrue(pyro.is_arrow_keys('rIght'))
+        self.assertTrue(pyro.is_arrow_keys('Up'))
         self.assertTrue(pyro.is_arrow_keys('down'))
         self.assertFalse(pyro.is_arrow_keys('exclaim'))
 
