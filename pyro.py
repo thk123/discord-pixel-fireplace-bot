@@ -16,7 +16,7 @@ def is_arrow_keys(command):
 
 def main():
     # have to import in this scope as requires a GUI to import(!)
-    from pyautogui import typewrite
+    from pyautogui import typewrite, press
 
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
@@ -36,8 +36,12 @@ def main():
 
         command = extract_message(message.content, '!')
         if command:
-            response = 'Executing fire command: ' + command
-            typewrite(command)
+            if is_arrow_keys(command):
+                response = 'Pressing arrow keys'
+                press(command)
+            else:
+                response = 'Executing fire command: ' + command
+                typewrite(command)
 
             print(response)
             await message.channel.send('Doing some firey stuff')
