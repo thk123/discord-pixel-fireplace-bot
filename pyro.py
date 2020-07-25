@@ -6,6 +6,12 @@ from dotenv import load_dotenv
 from pyautogui import typewrite
 
 
+def extract_message(message_body, prefix):
+    if message_body.startswith(prefix):
+        return str.strip(message_body[len(prefix):])
+    return None
+
+
 def main():
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
