@@ -10,6 +10,12 @@ def extract_message(message_body, prefix):
     return None
 
 
+def is_arrow_keys(command):
+    if command in {'up', 'down', 'left', 'right'}:
+        return command
+    return None
+
+
 def main():
     # have to import in this scope as requires a GUI to import(!)
     from pyautogui import typewrite
