@@ -3,10 +3,21 @@ import os
 import discord
 from dotenv import load_dotenv
 
-from pyautogui import typewrite
+
+def extract_message(message_body, prefix):
+    if message_body.startswith(prefix):
+        return str.strip(message_body[len(prefix):])
+    return None
+
+
+def is_arrow_keys(command):
+    return command.lower() in {'up', 'down', 'left', 'right'}
 
 
 def main():
+    # have to import in this scope as requires a GUI to import(!)
+    from pyautogui import typewrite, press
+
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
 
@@ -23,9 +34,14 @@ def main():
         if message.author == client.user:
             return
 
-        if message.content.startswith('!'):
-            response = 'Executing fire command: ' + message.content
-            typewrite(message.content)
+        command = extract_message(message.content, '!')
+        if command:
+            if is_arrow_keys(command):
+                response = 'Pressing arrow keys'
+                press(command)
+            else:
+                response = 'Executing fire command: ' + command
+                typewrite(command)
 
             print(response)
             await message.channel.send('Doing some firey stuff')
