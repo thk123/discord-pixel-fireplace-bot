@@ -37,7 +37,6 @@ And have the command typed in on the machine that the Bot is running on.
 Todo
 ----
 
-- [ ] React with a fire emoji when processing commands
 - [ ] Some sanity checking on the size of the input
 - [ ] Support for arrow keys for moving the marshmallow
 
