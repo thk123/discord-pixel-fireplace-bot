@@ -3,8 +3,6 @@ import os
 import discord
 from dotenv import load_dotenv
 
-from pyautogui import typewrite
-
 
 def extract_message(message_body, prefix):
     if message_body.startswith(prefix):
@@ -13,6 +11,9 @@ def extract_message(message_body, prefix):
 
 
 def main():
+    # have to import in this scope as requires a GUI to import(!)
+    from pyautogui import typewrite
+
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
 
