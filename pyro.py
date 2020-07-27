@@ -14,6 +14,15 @@ def is_arrow_keys(command):
     return command.lower() in {'up', 'down', 'left', 'right'}
 
 
+def is_valid_command(command:str):
+    if len(command) > 30:
+        return False
+
+    banned_commands = {'shutdown'}
+
+    return all(banned_command not in command.lower() for banned_command in banned_commands)
+
+
 def main():
     # have to import in this scope as requires a GUI to import(!)
     from pyautogui import typewrite, press
@@ -37,14 +46,16 @@ def main():
         command = extract_message(message.content, '!')
         if command:
             if is_arrow_keys(command):
-                response = 'Pressing arrow keys: ' + command
+                print('Pressing arrow keys: ' + command)
                 press(command)
-            else:
-                response = 'Executing fire command: ' + command
+                await message.add_reaction('🔥')
+            elif is_valid_command(command):
+                print('Executing fire command: ' + command)
                 typewrite(command)
-
-            print(response)
-            await message.add_reaction('🔥')
+                await message.add_reaction('🔥')
+            else:
+                print('Ignoring command: ' + command)
+                await message.add_reaction('❌')
 
     client.run(TOKEN)
 
