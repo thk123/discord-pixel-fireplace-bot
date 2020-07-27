@@ -43,6 +43,10 @@ def main():
         if message.author == client.user:
             return
 
+        # We're only interested in messages in the #firepit channel
+        if message.channel != 'firepit':
+            return
+
         command = extract_message(message.content, '!')
         if command:
             if is_arrow_keys(command):
