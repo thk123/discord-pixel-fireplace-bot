@@ -18,7 +18,7 @@ def is_valid_command(command:str):
     if len(command) > 30:
         return False
 
-    banned_commands = {'shutdown'}
+    banned_commands = {'shutdown', 'quit'}
 
     return all(banned_command not in command.lower() for banned_command in banned_commands)
 
