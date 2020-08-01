@@ -47,7 +47,10 @@ def main():
         if message.channel != 'firepit':
             return
 
-        command = extract_message(message.content, '!')
+        if client.user not in message.mentions:
+            return
+
+        command = extract_message(message.content, '')
         if command:
             if is_arrow_keys(command):
                 print('Pressing arrow keys: ' + command)
