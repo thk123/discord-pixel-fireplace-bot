@@ -2,5 +2,5 @@
 pyautogui
 
 # Required for connecting to the discord server
-discord
+discord.py
 python-dotenv

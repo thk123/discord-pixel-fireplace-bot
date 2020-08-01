@@ -6,7 +6,8 @@ class TestPyro(unittest.TestCase):
     def test_extract_message(self):
         self.assertEqual(pyro.extract_message('not starting with prefix', '!'), None)
         self.assertEqual(pyro.extract_message('!starting with prefix', '!'), 'starting with prefix')
-        self.assertEqual(pyro.extract_message('@pyro hello', '@pyro'), 'hello')
+        self.assertEqual(pyro.extract_message('no prefix', ''), 'no prefix')
+        self.assertEqual(pyro.extract_message('@pyro hello', '@Pyro'), 'hello')
 
     def test_arrow_keys(self):
         self.assertTrue(pyro.is_arrow_keys('left'))
